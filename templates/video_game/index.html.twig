@@ -3,9 +3,12 @@
 {% block title %}VideoGame index{% endblock %}
 
 {% block body %}
-    <h1>VideoGame index</h1>
-
-    <table class="table">
+    <h1 class="titreindex">VideoGame index</h1>
+<div class="container">
+    <div class="card text-left shadow-lg">
+      <img class="card-img-top" src="holder.js/100px180/" alt="">
+      <div class="card-body">
+        <table class="table table-striped">
         <thead>
             <tr>
                 <th>Id</th>
@@ -35,7 +38,11 @@
             </tr>
         {% endfor %}
         </tbody>
-    </table>
-
-    <a href="{{ path('video_game_new') }}">Create new</a>
+        </table>
+        <button onclick="window.location.href ='{{ path('video_game_new') }}'"type="button" class="btn btn-dark">
+            Ajouter un jeu
+        </button>
+      </div>
+    </div>
+    </div>
 {% endblock %}
