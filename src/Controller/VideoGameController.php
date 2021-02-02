@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/video/game")
+ * @Route("/administration/jeux-video")
  */
 class VideoGameController extends AbstractController
 {
@@ -26,7 +26,7 @@ class VideoGameController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="video_game_new", methods={"GET","POST"})
+     * @Route("/nouveau", name="video_game_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
@@ -35,6 +35,7 @@ class VideoGameController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $videoGame->setSlug(str_replace(' ','-',$videoGame->getName()));
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($videoGame);
             $entityManager->flush();
@@ -49,7 +50,7 @@ class VideoGameController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="video_game_show", methods={"GET"})
+     * @Route("/{slug}", name="video_game_show", methods={"GET"})
      */
     public function show(VideoGame $videoGame): Response
     {
@@ -59,7 +60,7 @@ class VideoGameController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="video_game_edit", methods={"GET","POST"})
+     * @Route("/{id}/modifier", name="video_game_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, VideoGame $videoGame): Response
     {
