@@ -40,7 +40,7 @@ class VideoGame
     private $gameKeys;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $image;
 
@@ -48,6 +48,16 @@ class VideoGame
      * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="games")
      */
     private $category;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $trailerUrl;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $slug;
 
     public function __construct()
     {
@@ -145,6 +155,30 @@ class VideoGame
     public function setCategory(?Category $category): self
     {
         $this->category = $category;
+
+        return $this;
+    }
+
+    public function getTrailerUrl(): ?string
+    {
+        return $this->trailerUrl;
+    }
+
+    public function setTrailerUrl(string $trailerUrl): self
+    {
+        $this->trailerUrl = $trailerUrl;
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): self
+    {
+        $this->slug = $slug;
 
         return $this;
     }

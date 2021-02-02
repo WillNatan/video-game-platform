@@ -3,7 +3,10 @@
 namespace App\Form;
 
 use App\Entity\GameKey;
+use App\Entity\VideoGame;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -12,8 +15,8 @@ class GameKeyType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('key')
-            ->add('game')
+            ->add('key', TextType::class)
+            ->add('game', EntityType::class, ['class'=>VideoGame::class, 'choice_label'=>'name'])
         ;
     }
 

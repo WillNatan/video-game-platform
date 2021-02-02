@@ -25,7 +25,7 @@
                 <td>{{ video_game.price }}</td>
                 <td>{{ video_game.image }}</td>
                 <td>
-                    <a href="{{ path('video_game_show', {'id': video_game.id}) }}">show</a>
+                    <a href="{{ path('video_game_show', {'slug': video_game.slug}) }}">show</a>
                     <a href="{{ path('video_game_edit', {'id': video_game.id}) }}">edit</a>
                 </td>
             </tr>

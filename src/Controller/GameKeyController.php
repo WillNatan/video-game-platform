@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/game/key")
+ * @Route("/administration/cle-cd")
  */
 class GameKeyController extends AbstractController
 {
@@ -26,7 +26,7 @@ class GameKeyController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="game_key_new", methods={"GET","POST"})
+     * @Route("/nouveau", name="game_key_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
@@ -59,7 +59,7 @@ class GameKeyController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="game_key_edit", methods={"GET","POST"})
+     * @Route("/{id}/modifier", name="game_key_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, GameKey $gameKey): Response
     {
