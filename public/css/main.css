@@ -1,0 +1,9 @@
+html,body{
+    height:100%;
+}
+
+body{
+    background: url(../img/bgmain.jpg) no-repeat center center;
+    object-fit: cover;
+    background-size: cover;
+}
