@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New GameKey{% endblock %}
+
+{% block body %}
+    <h1>Create new GameKey</h1>
+
+    {{ include('game_key/_form.html.twig') }}
+
+    <a href="{{ path('game_key_index') }}">back to list</a>
+{% endblock %}

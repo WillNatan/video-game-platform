@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}GameKey{% endblock %}
+
+{% block body %}
+    <h1>GameKey</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ game_key.id }}</td>
+            </tr>
+            <tr>
+                <th>Key</th>
+                <td>{{ game_key.key }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('game_key_index') }}">back to list</a>
+
+    <a href="{{ path('game_key_edit', {'id': game_key.id}) }}">edit</a>
+
+    {{ include('game_key/_delete_form.html.twig') }}
+{% endblock %}

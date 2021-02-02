@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}GameKey index{% endblock %}
+
+{% block body %}
+    <h1>GameKey index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Key</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for game_key in game_keys %}
+            <tr>
+                <td>{{ game_key.id }}</td>
+                <td>{{ game_key.key }}</td>
+                <td>
+                    <a href="{{ path('game_key_show', {'id': game_key.id}) }}">show</a>
+                    <a href="{{ path('game_key_edit', {'id': game_key.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('game_key_new') }}">Create new</a>
+{% endblock %}
