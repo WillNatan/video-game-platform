@@ -30,7 +30,7 @@ nav ul li {
 
 nav ul li a{
     color: #FFFFFF;
-    text-decoration: none;
+    text-decoration: none!important;
     transition: cubic-bezier(0.075, 0.82, 0.165, 1) 1s;
 }
 

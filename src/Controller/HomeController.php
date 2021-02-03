@@ -19,10 +19,10 @@ class HomeController extends AbstractController
     }
 
     /**
-     * @Route("/{slug}", name="gameDetails")
+     * @Route("/jeu/{slug}", name="gameDetails")
      */
     public function gameDetails(VideoGame $videoGame): Response
     {
-        return $this->render('home/index.html.twig', ['games' => $videoGame]);
+        return $this->render('home/details.html.twig', ['game' => $videoGame]);
     }
 }

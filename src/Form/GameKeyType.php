@@ -3,7 +3,6 @@
 namespace App\Form;
 
 use App\Entity\GameKey;
-use App\Entity\VideoGame;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -16,7 +15,7 @@ class GameKeyType extends AbstractType
     {
         $builder
             ->add('key', TextType::class)
-            ->add('game', EntityType::class, ['class'=>VideoGame::class, 'choice_label'=>'name'])
+            ->add('game', EntityType::class, ['class'=>GameKey::class, 'choice_label'=>'key'])
         ;
     }
 

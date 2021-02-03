@@ -1,9 +1,78 @@
-html,body{
-    height:100%;
+body {
+  background: url(../img/bgmain.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
-body{
-    background: url(../img/bgmain.jpg) no-repeat center center;
-    object-fit: cover;
-    background-size: cover;
+.img-caption {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  color: #ffffff;
+}
+
+.img-caption:hover {
+  cursor: pointer;
+}
+
+.linear-bg-red {
+  background: rgb(255, 0, 0);
+  background: linear-gradient(
+    0deg,
+    rgba(255, 0, 0, 1) 0%,
+    rgba(0, 212, 255, 0) 60%
+  );
+}
+
+.linear-bg-green {
+  background: rgb(67, 175, 13);
+  background: linear-gradient(
+    0deg,
+    rgba(67, 175, 13, 1) 0%,
+    rgba(0, 212, 255, 0) 60%
+  );
+}
+
+.linear-bg-blue {
+  background: rgb(0, 212, 255);
+  background: linear-gradient(
+    0deg,
+    rgba(0, 212, 255, 1) 0%,
+    rgba(0, 212, 255, 0) 60%
+  );
+}
+
+.game-info{
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+}
+
+.game-list a {
+  text-decoration: none;
+}
+
+
+.game-info span{
+    color:  rgba(67, 175, 13, 1);
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.game-info .game-text i{
+    font-size: 1rem;
+    color: #FFFFFF;
+}
+
+.game-text{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
