@@ -39,6 +39,7 @@ body{
 .content{
     padding: 3rem;
     margin-left: 200px;
+    margin-right: auto;
 }
 .card{
     padding: 15px;
@@ -49,3 +50,5 @@ body{
     text-align: center;
 
 }
+
+
