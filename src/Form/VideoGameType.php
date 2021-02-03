@@ -21,6 +21,7 @@ class VideoGameType extends AbstractType
             ->add('name', TextType::class)
             ->add('description', TextareaType::class)
             ->add('price', IntegerType::class)
+            ->add('trailerUrl', TextType::class)
             ->add('image', FileType::class, [
                 'label' => 'Image jeu',
 

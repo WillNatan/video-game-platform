@@ -34,7 +34,6 @@ class VideoGameController extends AbstractController
         $videoGame = new VideoGame();
         $form = $this->createForm(VideoGameType::class, $videoGame);
         $form->handleRequest($request);
-        $baseurl = $request->getScheme() . '://' . $request->getHttpHost() . $request->getBasePath().'/';
         if ($form->isSubmitted() && $form->isValid()) {
             $image = $form->get('image')->getdata();
             if ($image) {
@@ -50,7 +49,7 @@ class VideoGameController extends AbstractController
 
                 // updates the 'brochureFilename' property to store the PDF file name
                 // instead of its contents
-                $videoGame->setImage($this->getParameter('games_directory').'/'.$originalFilename);
+                $videoGame->setImage($originalFilename);
             }
             $videoGame->setSlug(str_replace(' ','-',$videoGame->getName()));
             $entityManager = $this->getDoctrine()->getManager();
@@ -84,7 +83,30 @@ class VideoGameController extends AbstractController
         $form = $this->createForm(VideoGameType::class, $videoGame);
         $form->handleRequest($request);
 
+        $oldImage = $videoGame->getImage();
+
         if ($form->isSubmitted() && $form->isValid()) {
+            $image = $form->get('image')->getdata();
+            if($image != $oldImage){
+                if ($image) {
+                    $originalFilename = $image->getClientOriginalName();
+                    try {
+                        $image->move(
+                            $this->getParameter('games_directory'),
+                            $originalFilename
+                        );
+                    } catch (FileException $e) {
+                        // ... handle exception if something happens during file upload
+                    }
+    
+                    // updates the 'brochureFilename' property to store the PDF file name
+                    // instead of its contents
+                    $videoGame->setImage($originalFilename);
+                }
+            }
+            else{
+                $videoGame->setImage($oldImage);
+            }
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('video_game_index');
