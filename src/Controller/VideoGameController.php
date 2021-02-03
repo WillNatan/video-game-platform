@@ -6,6 +6,7 @@ use App\Entity\VideoGame;
 use App\Form\VideoGameType;
 use App\Repository\VideoGameRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -33,8 +34,24 @@ class VideoGameController extends AbstractController
         $videoGame = new VideoGame();
         $form = $this->createForm(VideoGameType::class, $videoGame);
         $form->handleRequest($request);
-
+        $baseurl = $request->getScheme() . '://' . $request->getHttpHost() . $request->getBasePath().'/';
         if ($form->isSubmitted() && $form->isValid()) {
+            $image = $form->get('image')->getdata();
+            if ($image) {
+                $originalFilename = $image->getClientOriginalName();
+                try {
+                    $image->move(
+                        $this->getParameter('games_directory'),
+                        $originalFilename
+                    );
+                } catch (FileException $e) {
+                    // ... handle exception if something happens during file upload
+                }
+
+                // updates the 'brochureFilename' property to store the PDF file name
+                // instead of its contents
+                $videoGame->setImage($this->getParameter('games_directory').'/'.$originalFilename);
+            }
             $videoGame->setSlug(str_replace(' ','-',$videoGame->getName()));
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($videoGame);

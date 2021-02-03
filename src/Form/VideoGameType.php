@@ -22,7 +22,7 @@ class VideoGameType extends AbstractType
             ->add('description', TextareaType::class)
             ->add('price', IntegerType::class)
             ->add('image', FileType::class, [
-                'label' => 'Brochure (PDF file)',
+                'label' => 'Image jeu',
 
                 // unmapped means that this field is not associated to any entity property
                 'mapped' => false,
