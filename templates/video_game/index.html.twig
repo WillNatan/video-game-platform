@@ -30,8 +30,8 @@
                 <td>{{ video_game.image }}</td>
                 <td>{{ video_game.trailerUrl }}</td>
                 <td>
-                    <a href="{{ path('video_game_show', {'slug': video_game.slug}) }}">show</a>
-                    <a href="{{ path('video_game_edit', {'id': video_game.id}) }}">edit</a>
+                    <button onclick="window.location.href ='{{ path('video_game_show', {'slug': video_game.slug}) }}'"class="far fa-eye"></button>
+                    <button onclick="window.location.href ='{{ path('video_game_edit', {'id': video_game.id}) }}'"class="far fa-edit"></button>
                 </td>
             </tr>
         {% else %}

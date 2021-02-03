@@ -18,10 +18,10 @@ class VideoGameType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', TextType::class)
-            ->add('description', TextareaType::class)
-            ->add('price', IntegerType::class)
-            ->add('trailerUrl', TextType::class)
+            ->add('name', TextType::class,  ['attr'=>['class'=>'form-control']])
+            ->add('description', TextareaType::class,  ['attr'=>['class'=>'form-control']])
+            ->add('price', IntegerType::class,  ['attr'=>['class'=>'form-control']])
+            ->add('trailerUrl', TextType::class,  ['attr'=>['class'=>'form-control']])
             ->add('image', FileType::class, [
                 'label' => 'Image jeu',
 

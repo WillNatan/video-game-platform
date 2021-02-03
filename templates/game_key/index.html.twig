@@ -3,9 +3,12 @@
 {% block title %}GameKey index{% endblock %}
 
 {% block body %}
-    <h1>GameKey index</h1>
-
-    <table class="table">
+    <h1class ="titreindex">GameKey index</h1>
+<div clasqs="container">
+<div class="card text-left shadow-lg">
+  <img class="card-img-top" src="holder.js/100px180/" alt="">
+  <div class="card-body">
+    <table class="table table-striped">
         <thead>
             <tr>
                 <th>Id</th>
@@ -19,8 +22,8 @@
                 <td>{{ game_key.id }}</td>
                 <td>{{ game_key.gameKey }}</td>
                 <td>
-                    <a href="{{ path('game_key_show', {'id': game_key.id}) }}">show</a>
-                    <a href="{{ path('game_key_edit', {'id': game_key.id}) }}">edit</a>
+                    <button onclick="window.location.href '{{ path('game_key_show', {'id': game_key.id}) }}'"class="far fa-eye"></button>
+                    <button onclick="window.location.href '{{ path('game_key_edit', {'id': game_key.id}) }}'"class="far fa-edit"></button>
                 </td>
             </tr>
         {% else %}
@@ -30,6 +33,10 @@
         {% endfor %}
         </tbody>
     </table>
+  </div>
+</div>
+</div>
 
-    <a href="{{ path('game_key_new') }}">Create new</a>
+
+    <a href="{{ path('game_key_new') }}"class="btn btn-dark mt-3">Create new</a>
 {% endblock %}

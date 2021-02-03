@@ -1,13 +1,16 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit VideoGame{% endblock %}
+{% block title %}Edit VideoGame
+{% endblock %}
 
 {% block body %}
-    <h1>Edit VideoGame</h1>
+	<h1 class="titreindex">Edit VideoGame</h1>
+	<div class="container w-50">
+		{{ include('video_game/_form.html.twig', {'button_label': 'Update'}) }}
+		<div class="d-flex mt-3">
+			<a href="{{ path('video_game_index') }}" class="btn btn-dark">back to list</a>
 
-    {{ include('video_game/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('video_game_index') }}">back to list</a>
-
-    {{ include('video_game/_delete_form.html.twig') }}
+			{{ include('video_game/_delete_form.html.twig') }}
+		</div>
+	</div>
 {% endblock %}
