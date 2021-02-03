@@ -35,11 +35,6 @@ class VideoGame
     private $price;
 
     /**
-     * @ORM\OneToMany(targetEntity=GameKey::class, mappedBy="game")
-     */
-    private $gameKeys;
-
-    /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $image;
@@ -58,6 +53,11 @@ class VideoGame
      * @ORM\Column(type="string", length=255)
      */
     private $slug;
+
+    /**
+     * @ORM\OneToMany(targetEntity=GameKey::class, mappedBy="videoGame")
+     */
+    private $gameKeys;
 
     public function __construct()
     {
@@ -101,36 +101,6 @@ class VideoGame
     public function setPrice(float $price): self
     {
         $this->price = $price;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|GameKey[]
-     */
-    public function getGameKeys(): Collection
-    {
-        return $this->gameKeys;
-    }
-
-    public function addGameKey(GameKey $gameKey): self
-    {
-        if (!$this->gameKeys->contains($gameKey)) {
-            $this->gameKeys[] = $gameKey;
-            $gameKey->setGame($this);
-        }
-
-        return $this;
-    }
-
-    public function removeGameKey(GameKey $gameKey): self
-    {
-        if ($this->gameKeys->removeElement($gameKey)) {
-            // set the owning side to null (unless already changed)
-            if ($gameKey->getGame() === $this) {
-                $gameKey->setGame(null);
-            }
-        }
 
         return $this;
     }
@@ -179,6 +149,36 @@ class VideoGame
     public function setSlug(string $slug): self
     {
         $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|GameKey[]
+     */
+    public function getGameKeys(): Collection
+    {
+        return $this->gameKeys;
+    }
+
+    public function addGameKey(GameKey $gameKey): self
+    {
+        if (!$this->gameKeys->contains($gameKey)) {
+            $this->gameKeys[] = $gameKey;
+            $gameKey->setVideoGame($this);
+        }
+
+        return $this;
+    }
+
+    public function removeGameKey(GameKey $gameKey): self
+    {
+        if ($this->gameKeys->removeElement($gameKey)) {
+            // set the owning side to null (unless already changed)
+            if ($gameKey->getVideoGame() === $this) {
+                $gameKey->setVideoGame(null);
+            }
+        }
 
         return $this;
     }

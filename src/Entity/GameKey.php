@@ -20,38 +20,38 @@ class GameKey
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $key;
+    private $gameKey;
 
     /**
      * @ORM\ManyToOne(targetEntity=VideoGame::class, inversedBy="gameKeys")
      */
-    private $game;
+    private $videoGame;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getKey(): ?string
+    public function getGameKey(): ?string
     {
-        return $this->key;
+        return $this->gameKey;
     }
 
-    public function setKey(string $key): self
+    public function setGameKey(string $gameKey): self
     {
-        $this->key = $key;
+        $this->gameKey = $gameKey;
 
         return $this;
     }
 
-    public function getGame(): ?VideoGame
+    public function getVideoGame(): ?VideoGame
     {
-        return $this->game;
+        return $this->videoGame;
     }
 
-    public function setGame(?VideoGame $game): self
+    public function setVideoGame(?VideoGame $videoGame): self
     {
-        $this->game = $game;
+        $this->videoGame = $videoGame;
 
         return $this;
     }

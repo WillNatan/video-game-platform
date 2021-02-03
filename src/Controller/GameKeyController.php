@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\GameKey;
+use App\Form\GameKey1Type;
 use App\Form\GameKeyType;
 use App\Repository\GameKeyRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
