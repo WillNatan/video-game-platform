@@ -25,10 +25,8 @@
             <tr>
                 <td>{{ video_game.id }}</td>
                 <td>{{ video_game.name }}</td>
-                <td>{{ video_game.description }}</td>
                 <td>{{ video_game.price }}</td>
                 <td>{{ video_game.image }}</td>
-                <td>{{ video_game.trailerUrl }}</td>
                 <td>
                     <a href="{{ path('video_game_show', {'slug': video_game.slug}) }}" class="btn btn-info"><i class="far fa-eye"></i></a>
                     <a href="{{ path('video_game_edit', {'id': video_game.id}) }}" class="btn btn-warning"><i class="far fa-edit"></i></a>
