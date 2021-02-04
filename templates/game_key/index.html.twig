@@ -22,8 +22,8 @@
                 <td>{{ game_key.id }}</td>
                 <td>{{ game_key.gameKey }}</td>
                 <td>
-                    <button onclick="window.location.href '{{ path('game_key_show', {'id': game_key.id}) }}'"class="far fa-eye"></button>
-                    <button onclick="window.location.href '{{ path('game_key_edit', {'id': game_key.id}) }}'"class="far fa-edit"></button>
+                    <a href="{{ path('game_key_show', {'id': game_key.id}) }}" class="btn btn-info"><i class="far fa-eye"></i></a>
+                    <a href="{{ path('game_key_edit', {'id': game_key.id}) }}" class="btn btn-warning"><i class="far fa-edit"></i></a>
                 </td>
             </tr>
         {% else %}

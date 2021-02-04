@@ -45,7 +45,7 @@ class VideoGameType extends AbstractType
                     ])
                 ],
             ])
-            ->add('category', EntityType::class, ['class'=> Category::class, 'choice_label'=>'name'] )
+            ->add('category', EntityType::class, ['attr'=>['class'=>'form-control'],'class'=> Category::class, 'choice_label'=>'name'] )
         ;
     }
 

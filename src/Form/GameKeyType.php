@@ -16,7 +16,8 @@ class GameKeyType extends AbstractType
     {
         $builder
             ->add('gamekey', TextType::class,  ['attr'=>['class'=>'form-control']])
-            ->add('videoGame', EntityType::class, ['class' => VideoGame::class, 'choice_label' => 'name'])
+            ->add('videoGame', EntityType::class, ['attr'=>['class'=>'form-control'],'class' => VideoGame::class, 'choice_label' => 'name'])
+            
         ;
     }
 

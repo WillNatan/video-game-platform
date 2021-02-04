@@ -22,8 +22,8 @@
                     <td>{{ category.id }}</td>
                     <td>{{ category.name }}</td>
                     <td>
-                            <button onclick="window.location.href ='{{ path('category_show', {'id': category.id}) }}'"type="button" class="far fa-eye"></button>
-                            <button onclick="window.location.href ='{{ path('category_edit', {'id': category.id}) }}'"type="button" class="far fa-edit"></button>
+                            <a href="{{ path('category_show', {'id': category.id}) }}" class="btn btn-info"><i class="far fa-eye"></i></a>
+                            <a href="{{ path('category_edit', {'id': category.id}) }}" class="btn btn-warning"><i class="far fa-edit"></i></a>
                     </td>
                 </tr>
             {% else %}
