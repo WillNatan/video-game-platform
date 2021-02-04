@@ -15,7 +15,9 @@
 			<h1 class="text-success text-center font-weight-bold">{{ game.price }}
 				€</h1>
 			<div class="text-center">
-				<a href="" class="btn btn-success">Ajouter au panier</a>
+				<form action="{{ path('addToCart', {'id': game.id}) }}" method="POST">
+					<button type="submit" class="btn btn-success">Ajouter au panier</button>
+				</form>
 			</div>
 		</div>
 	</div>

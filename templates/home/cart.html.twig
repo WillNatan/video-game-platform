@@ -6,30 +6,109 @@
 {% block body %}
 	<div class="row">
 		<div class="col-md-12">
-            <div class="table-responsive">
-                <table class="table bg-dark text-light">
-                    <thead>
-                        <tr>
-                        <th>Miniature</th>
-                        <th>Nom</th>
-                        <th>Prix</th>
-                        <th>Qte</th>
-                        <th>Total</th>
-                        <th></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td></td>
-                            <td>Need for speed</td>
-                            <td>44€</td>
-                            <td><a href="" class="btn btn-sm btn-info mr-1"><i class="fa fa-plus"></i></a><input type="number" value="5"><a href="" class="btn btn-sm btn-info ml-1"><i class="fa fa-minus"></i></a></td>
-                            <td>220 €</td>
-                            <td><a href="" class="btn btn-danger" ><i class="fa fa-times"></i></a></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+			<div class="table-responsive">
+				<table class="table bg-dark text-light">
+					<thead>
+						<tr>
+							<th>Miniature</th>
+							<th>Nom</th>
+							<th>Prix</th>
+							<th>Qte</th>
+							<th>Total</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for game in games %}
+							<tr>
+								<td><img src="{{ asset('img/gameimg/'~game.game.image) }}" alt="miniature" width="50"></td>
+								<td>{{ game.game.name }}</td>
+								<td>
+									{{ game.game.price }} €</td>
+								<td>
+									<a class="btn btn-sm btn-info mr-1 addbtn" data-id="{{ game.game.id }}">
+										<i class="fa fa-plus"></i>
+									</a><input type="number" value="{{ game.qty }}" id="{{ "currentQty"~game.game.id }}" class="inputQty" data-id="{{ game.game.id }}">
+									<a  class="btn btn-sm btn-info ml-1 removebtn" data-id="{{ game.game.id }}">
+										<i class="fa fa-minus"></i>
+									</a>
+								</td>
+								<td><span id="{{ "total-price"~game.game.id }}">{{ game.total }}</span>€</td>
+								<td>
+									<form action="{{ path('removeToCart', {'id': game.game.id}) }}" method="POST">
+										<button class="btn btn-danger">
+											<i class="fa fa-times"></i>
+										</button>
+									</form>
+								</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+		</div>
 	</div>
+{% endblock %}
+
+{% block javascripts %}
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous"></script>
+	<script>
+		let addBtns = document.querySelectorAll('.addbtn');
+		let removeBtns = document.querySelectorAll('.removebtn');
+		addBtns.forEach((btn) => {
+			btn.addEventListener('click', () => {
+				let id = btn.dataset.id;
+				qty = 1;
+				addQty(id, qty);
+			})
+		})
+
+		removeBtns.forEach((btn) => {
+			btn.addEventListener('click', () => {
+				let id = btn.dataset.id;
+				qty = 1;
+				removeQty(id, qty);
+			})
+		})
+
+		inputs = document.querySelectorAll('.inputQty');
+
+		inputs.forEach((input) => {
+			input.addEventListener('blur', () => {
+				let id = input.dataset.id;
+				qty = input.value;
+				addQty(id, qty);
+			})
+		})
+		const addQty = (id, qty) => {
+			axios.post('add-qty', {
+				id:id,
+				qty:qty
+			})
+			.then((response) => {
+				if(response.data.redirect == 1){
+					location.reload();
+				}
+				$('#currentQty'+id).val(response.data.qty)
+				$('#total-price'+id).text(response.data.total)
+			})
+			}
+
+		const removeQty = (id, qty) => {
+			axios.post('remove-qty', {
+				id:id,
+				qty:qty
+			})
+			.then((response) => {
+				if(response.data.redirect == 1){
+					location.reload();
+				}
+				$('#currentQty'+id).val(response.data.qty)
+				$('#total-price'+id).text(response.data.total)
+			})
+			}
+
+
+			
+	</script>
 {% endblock %}
