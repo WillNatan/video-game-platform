@@ -28,7 +28,7 @@
 								<td>
 									<a class="btn btn-sm btn-info mr-1 addbtn" data-id="{{ game.game.id }}">
 										<i class="fa fa-plus"></i>
-									</a><input type="number" value="{{ game.qty }}" id="{{ "currentQty"~game.game.id }}" class="inputQty" data-id="{{ game.game.id }}">
+									</a><input type="number" value="{{ game.qty }}" min="0" id="{{ "currentQty"~game.game.id }}" class="inputQty" data-id="{{ game.game.id }}">
 									<a  class="btn btn-sm btn-info ml-1 removebtn" data-id="{{ game.game.id }}">
 										<i class="fa fa-minus"></i>
 									</a>
@@ -81,11 +81,13 @@
 			})
 		})
 		const addQty = (id, qty) => {
+			$('#currentQty'+id).attr("disabled","disabled")
 			axios.post('add-qty', {
 				id:id,
 				qty:qty
 			})
 			.then((response) => {
+				$('#currentQty'+id).removeAttr("disabled")
 				if(response.data.redirect == 1){
 					location.reload();
 				}
@@ -95,11 +97,13 @@
 			}
 
 		const removeQty = (id, qty) => {
+			$('#currentQty'+id).attr("disabled","disabled")
 			axios.post('remove-qty', {
 				id:id,
 				qty:qty
 			})
 			.then((response) => {
+				$('#currentQty'+id).removeAttr("disabled")
 				if(response.data.redirect == 1){
 					location.reload();
 				}

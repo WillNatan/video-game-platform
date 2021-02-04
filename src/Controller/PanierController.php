@@ -60,7 +60,7 @@ class PanierController extends AbstractController
 
         if ($params['qty'] == 1) {
             $panier[$params['id']] = $panier[$params['id']] + $params['qty'];
-        } else if($params['qty'] == 0) {
+        } else if($params['qty'] <= 0) {
             unset($panier[$params['id']]);
                 $session->set('panier', $panier);
                 return $this->json(['redirect'=> 1]);
