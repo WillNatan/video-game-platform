@@ -1,0 +1,30 @@
+{% extends 'frontbase.html.twig' %}
+
+{% block title %}ActuGames - Accueil
+{% endblock %}
+
+{% block body %}
+	<div class="row game-list">
+		{% for game in games %}
+			<div class="col-md-3">
+			<a href="{{ path('gameDetails', {'slug':game.slug}) }}">
+				<img class="d-block w-100" src="{{ asset('img/gameimg/'~game.image) }}" alt="best seller">
+				</a>
+			<div class="game-info">
+				<a href=""><h4 class="text-light">{{ game.name }}</h4></a>
+				<div class="game-text">
+					<span>{{ game.price }} €</span>
+					<div class="stars">
+						<i class="fa fa-star"></i>
+						<i class="fa fa-star"></i>
+						<i class="fa fa-star"></i>
+						<i class="fa fa-star"></i>
+						<i class="fa fa-star"></i>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+		{% endfor %}
+	</div>
+{% endblock %}

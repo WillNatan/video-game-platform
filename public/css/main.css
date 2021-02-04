@@ -104,3 +104,11 @@ footer ul{
   padding: 0;
 }
 
+.badge-notify{
+  background:#FFFFFF;
+  position:relative;
+ }
+
+ td{
+   vertical-align: middle!important;
+ }

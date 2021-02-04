@@ -25,4 +25,28 @@ class HomeController extends AbstractController
     {
         return $this->render('home/details.html.twig', ['game' => $videoGame]);
     }
+
+    /**
+     * @Route("/tous-les-jeux", name="allGames")
+     */
+    public function allGames(VideoGameRepository $videoGameRepository): Response
+    {
+        return $this->render('home/allgames.html.twig', ['games' => $videoGameRepository->findAll()]);
+    }
+
+    /**
+     * @Route("/panier", name="cart")
+     */
+    public function cart(): Response
+    {
+        return $this->render('home/cart.html.twig');
+    }
+
+    /**
+     * @Route("/administration", name="admin_home")
+     */
+    public function adminHome(): Response
+    {
+        return $this->render('home/admin.html.twig');
+    }
 }
