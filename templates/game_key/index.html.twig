@@ -3,8 +3,8 @@
 {% block title %}GameKey index{% endblock %}
 
 {% block body %}
-    <h1class ="titreindex">GameKey index</h1>
-<div clasqs="container">
+    <h1 class ="titreindex">GameKey index</h1>
+<div class="container">
 <div class="card text-left shadow-lg">
   <img class="card-img-top" src="holder.js/100px180/" alt="">
   <div class="card-body">
@@ -35,8 +35,9 @@
     </table>
   </div>
 </div>
+    <a href="{{ path('game_key_new') }}"class="btn btn-dark mt-3">Create new</a>
 </div>
 
 
-    <a href="{{ path('game_key_new') }}"class="btn btn-dark mt-3">Create new</a>
+
 {% endblock %}

@@ -1,13 +1,20 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit GameKey{% endblock %}
+{% block title %}Edit GameKey
+{% endblock %}
 
 {% block body %}
-    <h1>Edit GameKey</h1>
+	<h1 class="titreindex">Edit GameKey</h1>
+	<div class="container w-50">
 
-    {{ include('game_key/_form.html.twig', {'button_label': 'Update'}) }}
+		{{ include('game_key/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('game_key_index') }}">back to list</a>
+		<div class="d-flex">
+			<a href="{{ path('game_key_index') }}" class="btn btn-dark mt-3">back to list</a>
 
-    {{ include('game_key/_delete_form.html.twig') }}
+			{{ include('game_key/_delete_form.html.twig') }}
+		</div>
+	</div>
+
+
 {% endblock %}

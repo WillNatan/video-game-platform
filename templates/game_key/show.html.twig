@@ -3,9 +3,11 @@
 {% block title %}GameKey{% endblock %}
 
 {% block body %}
-    <h1>GameKey</h1>
-
-    <table class="table">
+    <h1 class="titreindex">GameKey</h1>
+<div class="card text-left shadow-lg">
+  <img class="card-img-top" src="holder.js/100px180/" alt="">
+  <div class="card-body">
+    <table class="table table-striped">
         <tbody>
             <tr>
                 <th>Id</th>
@@ -13,14 +15,18 @@
             </tr>
             <tr>
                 <th>Key</th>
-                <td>{{ game_key.key }}</td>
+                <td>{{ game_key.gameKey }}</td>
             </tr>
         </tbody>
     </table>
+  </div>
+</div>
 
-    <a href="{{ path('game_key_index') }}">back to list</a>
+<div class="d-flex">
+    <a href="{{ path('game_key_index') }}"class="btn btn-dark mt-3"=>back to list</a>
 
-    <a href="{{ path('game_key_edit', {'id': game_key.id}) }}">edit</a>
+    <a href="{{ path('game_key_edit', {'id': game_key.id}) }}"class="btn btn-dark mt-3 ml-3">edit</a>
 
     {{ include('game_key/_delete_form.html.twig') }}
+    </div>
 {% endblock %}
