@@ -1,46 +1,53 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}VideoGame index{% endblock %}
+{% block title %}VideoGame index
+{% endblock %}
 
 {% block body %}
-    <h1 class="titreindex">VideoGame index</h1>
-<div class="container">
-    <div class="card text-left shadow-lg">
-      <img class="card-img-top" src="holder.js/100px180/" alt="">
-      <div class="card-body">
-        <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Price</th>
-                <th>Image</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for video_game in video_games %}
-            <tr>
-                <td>{{ video_game.id }}</td>
-                <td>{{ video_game.name }}</td>
-                <td>{{ video_game.price }}</td>
-                <td>{{ video_game.image }}</td>
-                <td>
-                    <a href="{{ path('video_game_show', {'slug': video_game.slug}) }}" class="btn btn-info"><i class="far fa-eye"></i></a>
-                    <a href="{{ path('video_game_edit', {'id': video_game.id}) }}" class="btn btn-warning"><i class="far fa-edit"></i></a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="6">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-        </table>
-        <button onclick="window.location.href ='{{ path('video_game_new') }}'"type="button" class="btn btn-dark">
-            Ajouter un jeu
-        </button>
-      </div>
-    </div>
-    </div>
+	<h1 class="titreindex">VideoGame index</h1>
+	<div class="container">
+		<div class="card text-left shadow-lg">
+			<img class="card-img-top" src="holder.js/100px180/" alt="">
+			<div class="card-body">
+				<div class="table-responsive">
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th>Id</th>
+								<th>Name</th>
+								<th>Price</th>
+								<th>Image</th>
+								<th>actions</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for video_game in video_games %}
+								<tr>
+									<td>{{ video_game.id }}</td>
+									<td>{{ video_game.name }}</td>
+									<td>{{ video_game.price }}</td>
+									<td>{{ video_game.image }}</td>
+									<td>
+										<a href="{{ path('video_game_show', {'slug': video_game.slug}) }}" class="btn btn-info">
+											<i class="far fa-eye"></i>
+										</a>
+										<a href="{{ path('video_game_edit', {'id': video_game.id}) }}" class="btn btn-warning">
+											<i class="far fa-edit"></i>
+										</a>
+									</td>
+								</tr>
+							{% else %}
+								<tr>
+									<td colspan="6">no records found</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+				<button onclick="window.location.href ='{{ path('video_game_new') }}'" type="button" class="btn btn-dark">
+					Ajouter un jeu
+				</button>
+			</div>
+		</div>
+	</div>
 {% endblock %}

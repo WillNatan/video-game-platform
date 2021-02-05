@@ -9,35 +9,37 @@
 		<div class="card text-left shadow-lg">
 			<img class="card-img-top" src="holder.js/100px180/" alt="">
 			<div class="card-body">
-				<table class="table table-striped">
-					<thead>
-						<tr>
-							<th>Id</th>
-							<th>Key</th>
-							<th>actions</th>
-						</tr>
-					</thead>
-					<tbody>
-						{% for game_key in game_keys %}
+				<div class="table-responsive">
+					<table class="table table-striped">
+						<thead>
 							<tr>
-								<td>{{ game_key.id }}</td>
-								<td>{{ game_key.gameKey }}</td>
-								<td>
-									<a href="{{ path('game_key_show', {'id': game_key.id}) }}" class="btn btn-info">
-										<i class="far fa-eye"></i>
-									</a>
-									<a href="{{ path('game_key_edit', {'id': game_key.id}) }}" class="btn btn-warning">
-										<i class="far fa-edit"></i>
-									</a>
-								</td>
+								<th>Id</th>
+								<th>Key</th>
+								<th>actions</th>
 							</tr>
-						{% else %}
-							<tr>
-								<td colspan="3">no records found</td>
-							</tr>
-						{% endfor %}
-					</tbody>
-				</table>
+						</thead>
+						<tbody>
+							{% for game_key in game_keys %}
+								<tr>
+									<td>{{ game_key.id }}</td>
+									<td>{{ game_key.gameKey }}</td>
+									<td>
+										<a href="{{ path('game_key_show', {'id': game_key.id}) }}" class="btn btn-info">
+											<i class="far fa-eye"></i>
+										</a>
+										<a href="{{ path('game_key_edit', {'id': game_key.id}) }}" class="btn btn-warning">
+											<i class="far fa-edit"></i>
+										</a>
+									</td>
+								</tr>
+							{% else %}
+								<tr>
+									<td colspan="3">no records found</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
 			</div>
 		</div>
 		<a href="{{ path('game_key_new') }}" class="btn btn-dark mt-3">Create new</a>

@@ -8,6 +8,7 @@
     <div class="card text-left shadow-lg">
       <img class="card-img-top" src="holder.js/100px180/" alt="">
       <div class="card-body">
+      <div class="table-responsive">
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -33,6 +34,7 @@
             {% endfor %}
             </tbody>
         </table>
+        </div>
         <button onclick="window.location.href ='{{ path('category_new') }}'"type="button" class="btn btn-dark">
             Ajouter une catégorie
         </button>

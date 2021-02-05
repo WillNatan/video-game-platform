@@ -3,11 +3,19 @@
     width: 200px;
     position: fixed;
     top: 0;
-    left: 0;
+    left: -200px;
     background-color: #111;
     overflow-x: hidden;
     padding: 20px;
+    transition: .3s;
   }
+
+.closebtn{
+    position:absolute;
+    top: 15px;
+    right: 15px;
+
+}
 
 .sidebar ul{
     list-style: none;
@@ -38,9 +46,10 @@ body{
 
 .content{
     padding: 3rem;
-    margin-left: 200px;
     margin-right: auto;
+    transition: .3s;
 }
+
 .card{
     padding: 15px;
     border-radius: 16px!important;
