@@ -1,44 +1,40 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}User
+{% block title %}Utilisateur -
+	{{ user.email }}
 {% endblock %}
 
 {% block body %}
-	<h1 class="titreindex">User</h1>
-	<div class="card text-left shadow-lg">
-		<img class="card-img-top" src="holder.js/100px180/" alt="">
-		<div class="card-body">
-			<div class="table-responsive">
-				<table class="table table-striped">
-					<tbody>
-						<tr>
-							<th>Id</th>
-							<td>{{ user.id }}</td>
-						</tr>
-						<tr>
-							<th>Email</th>
-							<td>{{ user.email }}</td>
-						</tr>
-						<tr>
-							<th>Roles</th>
-							<td>{{ user.roles ? user.roles|json_encode : '' }}</td>
-						</tr>
-						<tr>
-							<th>Password</th>
-							<td>{{ user.password }}</td>
-						</tr>
-					</tbody>
-				</table>
+	<div class="container">
+		<div class="card text-left shadow-lg">
+			<div class="card-header">
+				<h3 class="titreindex">Utilisateur</h3>
+			</div>
+			<div class="card-body">
+				<div class="table-responsive">
+					<table class="table table-striped">
+						<tbody>
+							<tr>
+								<th>Email</th>
+								<td>{{ user.email }}</td>
+							</tr>
+							<tr>
+								<th>Roles</th>
+								<td>{% for role in user.roles %}
+									{{ role == 'ROLE_USER' ? "Utilisateur" : role == "ROLE_ADMIN" ? "Administrateur," }}
+								{% endfor %}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="card-footer">
+				<div class="d-flex mt-3 justify-content-center flex-wrap">
+					<a href="{{ path('user_index') }}" class="btn btn-dark"><i class="fa fa-arrow-left"></i></a>
+					<a href="{{ path('user_edit', {'id': user.id}) }}" class="btn btn-dark ml-1"><i class="fa fa-edit"></i></a>
+					{{ include('user/_delete_form.html.twig') }}
+				</div>
 			</div>
 		</div>
-	</div>
-
-
-	<div class="d-flex mt-3">
-		<a href="{{ path('user_index') }}" class="btn btn-dark">back to list</a>
-
-		<a href="{{ path('user_edit', {'id': user.id}) }}" class="btn btn-dark ml-3">edit</a>
-
-		{{ include('user/_delete_form.html.twig') }}
 	</div>
 {% endblock %}

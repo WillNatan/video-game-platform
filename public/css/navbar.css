@@ -8,6 +8,7 @@
     overflow-x: hidden;
     padding: 20px;
     transition: .3s;
+    z-index: 9999;
   }
 
 .closebtn{
@@ -40,12 +41,18 @@
 
 }
 
+.sidebar.active{
+    left:0;
+}
+
+
 body{
     background-image:url(../background_mario.jpg);
 }
 
 .content{
-    padding: 3rem;
+    /* padding: 3rem; */
+    margin-top: 3rem;
     margin-right: auto;
     transition: .3s;
 }
@@ -60,5 +67,8 @@ body{
 
 }
 
-
-
+header{
+    width: 100%;
+    background-color: #FFFFFF;
+    padding: 10px
+  }

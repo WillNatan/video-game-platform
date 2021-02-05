@@ -1,11 +1,21 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New VideoGame{% endblock %}
+{% block title %}Ajout d'un jeu vidéo
+{% endblock %}
 
 {% block body %}
-    <h1 class="titre">Create new VideoGame</h1>
+	<div class="container">
+		<div class="card">
+			<div class="card-header">
+				<h3 class="titreindex">Ajout d'un jeu vidéo</h3>
+			</div>
 
-    {{ include('video_game/_form.html.twig') }}
-
-    <a href="{{ path('video_game_index') }}"class="btn btn-dark mt-3">back to list</a>
+			{{ include('video_game/_form.html.twig') }}
+			<div class="card-footer">
+				<a href="{{ path('video_game_index') }}" class="btn btn-dark">
+					<i class="fa fa-arrow-left"></i>
+				</a>
+			</div>
+		</div>
+	</div>
 {% endblock %}

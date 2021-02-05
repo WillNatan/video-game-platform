@@ -1,11 +1,18 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New GameKey{% endblock %}
+{% block title %}Nouvelle clé CD
+{% endblock %}
 
 {% block body %}
-    <h1 class="titre">Create new GameKey</h1>
-
-    {{ include('game_key/_form.html.twig') }}
-
-    <a href="{{ path('game_key_index') }}"class="btn btn-dark mt-3">back to list</a>
+	<div class="container">
+        <div class="card">
+		<div class="card-header">
+			<h3 class="titreindex">Nouvelle clé CD</h3>
+		</div>
+        {{ include('game_key/_form.html.twig') }}
+		<div class="card-footer">
+        <a href="{{ path('game_key_index') }}"class="btn btn-dark mt-3"><i class="fa fa-arrow-left"></i></a>
+		</div>
+	</div>
+    </div>
 {% endblock %}

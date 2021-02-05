@@ -1,18 +1,22 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit GameKey
+{% block title %}Modification clé cd
 {% endblock %}
 
 {% block body %}
-	<h1 class="titreindex">Edit GameKey</h1>
-	<div class="container w-50">
+	<div class="container">
+		<div class="card">
+			<div class="card-header">
+				<h3 class="titreindex">Modification clé cd</h3>
+			</div>
+			{{ include('game_key/_form.html.twig', {'button_label': 'Modifier'}) }}
+			<div class="card-footer">
+				<div class="d-flex justify-content-center flex-wrap">
+					<a href="{{ path('game_key_index') }}" class="btn btn-dark"><i class="fa fa-arrow-left"></i></a>
 
-		{{ include('game_key/_form.html.twig', {'button_label': 'Update'}) }}
-
-		<div class="d-flex">
-			<a href="{{ path('game_key_index') }}" class="btn btn-dark mt-3">back to list</a>
-
-			{{ include('game_key/_delete_form.html.twig') }}
+					{{ include('game_key/_delete_form.html.twig') }}
+				</div>
+			</div>
 		</div>
 	</div>
 

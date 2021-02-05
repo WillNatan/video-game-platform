@@ -1,20 +1,21 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Category
+{% block title %}Modification de la catégorie
 {% endblock %}
 
 {% block body %}
-	<h1 class="titreindex">Edit Category</h1>
-
-	<div class='container w-50'>
-
-		{{ include('category/_form.html.twig', {'button_label': 'Update'}) }}
-
-		
-        <div class="d-flex mt-3">
-        <a href="{{ path('category_index') }}" class="btn btn-dark ">back to list</a>
-		{{ include('category/_delete_form.html.twig') }}
-        </div>
-
+	<div class="container">
+		<div class="card">
+			<div class="card-header">
+				<h3 class="titreindex">Modification de la catégorie</h3>
+			</div>
+			{{ include('category/_form.html.twig', {'button_label': 'Modifier'}) }}
+			<div class="card-footer">
+				<div class="d-flex flex-wrap justify-content-center">
+					<a href="{{ path('category_index') }}" class="btn btn-dark"><i class="fa fa-arrow-left"></i></a>
+					{{ include('category/_delete_form.html.twig') }}
+				</div>
+			</div>
+		</div>
 	</div>
 {% endblock %}

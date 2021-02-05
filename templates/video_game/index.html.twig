@@ -1,19 +1,21 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}VideoGame index
+{% block title %}Liste des jeux vidéos
 {% endblock %}
 
 {% block body %}
-	<h1 class="titreindex">VideoGame index</h1>
 	<div class="container">
+		
 		<div class="card text-left shadow-lg">
-			<img class="card-img-top" src="holder.js/100px180/" alt="">
+			<div class="card-header">
+				<h3 class="titreindex">Liste des jeux vidéos</h3>
+			</div>
 			<div class="card-body">
 				<div class="table-responsive">
 					<table class="table table-striped">
 						<thead>
 							<tr>
-								<th>Id</th>
+								
 								<th>Name</th>
 								<th>Price</th>
 								<th>Image</th>
@@ -23,7 +25,7 @@
 						<tbody>
 							{% for video_game in video_games %}
 								<tr>
-									<td>{{ video_game.id }}</td>
+									
 									<td>{{ video_game.name }}</td>
 									<td>{{ video_game.price }}</td>
 									<td>{{ video_game.image }}</td>
@@ -44,6 +46,8 @@
 						</tbody>
 					</table>
 				</div>
+			</div>
+			<div class="card-footer">
 				<button onclick="window.location.href ='{{ path('video_game_new') }}'" type="button" class="btn btn-dark">
 					Ajouter un jeu
 				</button>
